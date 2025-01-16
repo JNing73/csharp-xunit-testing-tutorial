@@ -10,4 +10,6 @@ the course content.
 
 ## Coding Concepts Demonstrated
 
-- I will update this document as I proceed
+- Setting up an xUnit test project
+- Creating test classes
+- Creating tests methods which utilise Assert functions

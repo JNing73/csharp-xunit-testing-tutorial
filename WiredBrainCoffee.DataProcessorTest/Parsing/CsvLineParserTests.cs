@@ -17,7 +17,7 @@ public class CsvLineParserTests
     [Fact]
     public void ShouldSkipEmptyLines()
     {
-        string[] csvLines = new[] { "" };
+        string[] csvLines = new[] { "", " " };
 
         var machineDataItems = CsvLineParser.Parse(csvLines);
 

@@ -11,6 +11,11 @@ namespace WiredBrainCoffee.DataProcessor.Parsing
 
             foreach (var csvLine in csvlines)
             {
+                if (string.IsNullOrWhiteSpace(csvLine))
+                {
+                    continue;
+                }
+
                 var machineDataItem = Parse(csvLine);
 
                 machineDataItems.Add(machineDataItem);

@@ -8,6 +8,6 @@ The base code was all written by the course creator Thomas Claudius Huber
 will be identical or in very similar to what was demonstrated by Thomas in
 the course content.
 
-## coding concepts demonstrated
+## Coding Concepts Demonstrated
 
 - I will update this document as I proceed

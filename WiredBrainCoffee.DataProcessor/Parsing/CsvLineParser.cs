@@ -28,6 +28,11 @@ namespace WiredBrainCoffee.DataProcessor.Parsing
         {
             var lineItems = csvLine.Split(';');
 
+            if(lineItems.Length != 2)
+            {
+                throw new Exception();
+            }
+
             return new MachineDataItem(lineItems[0], DateTime.Parse(lineItems[1], CultureInfo.InvariantCulture));
         }
     }

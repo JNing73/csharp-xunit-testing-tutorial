@@ -13,3 +13,4 @@ the course content.
 - Setting up an xUnit test project
 - Creating test classes
 - Creating tests methods which utilise Assert functions
+- Assertions on Exceptions (Including exception messages)

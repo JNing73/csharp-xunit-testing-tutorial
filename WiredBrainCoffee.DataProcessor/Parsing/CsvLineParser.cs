@@ -30,7 +30,7 @@ namespace WiredBrainCoffee.DataProcessor.Parsing
 
             if(lineItems.Length != 2)
             {
-                throw new Exception();
+                throw new Exception($"Invalid csv line: {csvLine}");
             }
 
             return new MachineDataItem(lineItems[0], DateTime.Parse(lineItems[1], CultureInfo.InvariantCulture));

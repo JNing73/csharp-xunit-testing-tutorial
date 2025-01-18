@@ -28,8 +28,10 @@ public class CsvLineParserTests
     [Fact]
     public void ShouldThrowExceptionForInvalidLine()
     {
-        string[] csvLines = new[] { "Cappucino" };
+        var csvLine = "Cappucino";
+        string[] csvLines = new[] { csvLine };
 
         var exception = Assert.Throws<Exception>(() => CsvLineParser.Parse(csvLines));
+        Assert.Equal($"Invalid csv line: {csvLine}", exception.Message);
     }
 }

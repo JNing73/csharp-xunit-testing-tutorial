@@ -32,8 +32,10 @@ namespace WiredBrainCoffee.DataProcessor.Parsing
             {
                 throw new Exception($"Invalid csv line: {csvLine}");
             }
-
-            return new MachineDataItem(lineItems[0], DateTime.Parse(lineItems[1], CultureInfo.InvariantCulture));
+            if (!DateTime.TryParse(lineItems[1], CultureInfo.InvariantCulture, out DateTime dateTime)) {
+                throw new Exception($"Invalid csv line: {csvLine}");
+            }
+            return new MachineDataItem(lineItems[0], dateTime);
         }
     }
 }

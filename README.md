@@ -16,3 +16,4 @@ the course content.
 - Assertions on Exceptions (Including exception messages)
 - Setting up a data driven test
 - Use dependency injection to decouple dependcies to assist in unit testing
+- Setting up common common code to run before each test

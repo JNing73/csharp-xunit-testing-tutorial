@@ -1,10 +1,17 @@
-﻿using WiredBrainCoffee.DataProcessor.Model;
+﻿using WiredBrainCoffee.DataProcessor.Data;
+using WiredBrainCoffee.DataProcessor.Model;
 
 namespace WiredBrainCoffee.DataProcessor.Processing
 {
     public class MachineDataProcessor
     {
         private readonly Dictionary<string, int> _countPerCoffeeType = new();
+        private readonly ICoffeeCountStore _coffeeCountStore;
+
+        public MachineDataProcessor(ICoffeeCountStore coffeeCountStore)
+        {
+            _coffeeCountStore = coffeeCountStore;    
+        }
 
         public void ProcessItems(MachineDataItem[] dataItems)
         {
@@ -34,8 +41,7 @@ namespace WiredBrainCoffee.DataProcessor.Processing
         {
             foreach (var entry in _countPerCoffeeType)
             {
-                var line = $"{entry.Key}:{entry.Value}";
-                Console.WriteLine(line);
+                _coffeeCountStore.Save(new CoffeeCountItem(entry.Key, entry.Value));
             }
         }
     }

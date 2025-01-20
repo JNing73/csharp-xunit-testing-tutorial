@@ -15,3 +15,6 @@ the course content.
 - Creating tests methods which utilise Assert functions
 - Assertions on Exceptions (Including exception messages)
 - Setting up a data driven test
+- Use dependency injection to decouple dependcies to assist in unit testing
+- Setting up common common code to run before each test
+- Setup code to run at the end of each test via IDisposable

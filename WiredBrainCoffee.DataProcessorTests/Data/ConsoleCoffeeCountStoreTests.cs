@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using WiredBrainCoffee.DataProcessor.Model;
 
-namespace WiredBrainCoffee.DataProcessor.Data
+namespace WiredBrainCoffee.DataProcessor.Data;
+public class ConsoleCoffeeCountStoreTests
 {
-    internal class ConsoleCoffeeCountStoreTests
+    [Fact]
+    public void ShouldWriteOutputToConsole()
     {
+        var coffeeCountItem = new CoffeeCountItem("Cappuccino", 5);
+        var consoleCoffeeCountStore = new ConsoleCoffeeCountStore();
+
+        consoleCoffeeCountStore.Save(coffeeCountItem);
     }
 }

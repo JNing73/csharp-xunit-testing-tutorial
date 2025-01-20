@@ -5,7 +5,7 @@ VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WiredBrainCoffee.DataProcessor", "WiredBrainCoffee.DataProcessor\WiredBrainCoffee.DataProcessor.csproj", "{186D503D-31FC-4950-A5BB-0F37A91A902A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WiredBrainCoffee.DataProcessorTest", "WiredBrainCoffee.DataProcessorTest\WiredBrainCoffee.DataProcessorTest.csproj", "{E571CB89-404A-4E6D-B9FD-ECFB549B9A96}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WiredBrainCoffee.DataProcessorTests", "WiredBrainCoffee.DataProcessorTests\WiredBrainCoffee.DataProcessorTests.csproj", "{E571CB89-404A-4E6D-B9FD-ECFB549B9A96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

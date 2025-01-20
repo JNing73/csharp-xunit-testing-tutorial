@@ -12,6 +12,8 @@ namespace WiredBrainCoffee.DataProcessor.Data
             _textWriter = textWriter;
         }
 
+        public ConsoleCoffeeCountStore() : this(Console.Out) { }
+
         public void Save(CoffeeCountItem item)
         {
             var line = $"{item.CoffeeType}:{item.Count}";

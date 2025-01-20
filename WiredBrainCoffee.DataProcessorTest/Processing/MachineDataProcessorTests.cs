@@ -32,6 +32,30 @@ public class MachineDataProcessorTests
         Assert.Equal("Espresso", item.CoffeeType);
         Assert.Equal(1, item.Count);
     }
+
+    [Fact]
+    public void ShouldClearPreviousCoffeeCount()
+    {
+        var coffeeCountStore = new FakeCoffeeCountStore();
+        var machineDataProcessor = new MachineDataProcessor(coffeeCountStore);
+        var items = new[]
+        {
+            new MachineDataItem("Cappuccino", new DateTime(2022,10,27,8,0,0)),
+        };
+
+        // After running twice two Type:Count's should be saved
+        // And they should both be Cappuccino : 1 if the dictionary correctly cleared between runs
+        machineDataProcessor.ProcessItems(items);
+        machineDataProcessor.ProcessItems(items);
+
+        Assert.Equal(2, coffeeCountStore.SavedItems.Count);
+        foreach (var item in coffeeCountStore.SavedItems)
+        {
+            Assert.Equal("Cappuccino", item.CoffeeType);
+            Assert.Equal(1, item.Count);
+        }
+    }
+
 }
 
 public class FakeCoffeeCountStore : ICoffeeCountStore

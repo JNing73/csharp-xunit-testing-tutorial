@@ -3,12 +3,12 @@ using WiredBrainCoffee.DataProcessor.Model;
 
 namespace WiredBrainCoffee.DataProcessor.Processing;
 
-public class MachineDataProcessorTests
+public class MachineDataProcessorTests : IDisposable
 {
     private readonly FakeCoffeeCountStore _coffeeCountStore;
     private readonly MachineDataProcessor _machineDataProcessor;
 
-    public MachineDataProcessorTests() 
+    public MachineDataProcessorTests()
     {
         _coffeeCountStore = new FakeCoffeeCountStore();
         _machineDataProcessor = new MachineDataProcessor(_coffeeCountStore);
@@ -61,6 +61,10 @@ public class MachineDataProcessorTests
         }
     }
 
+    public void Dispose()
+    {
+        // Code to run after every test
+    }
 }
 
 public class FakeCoffeeCountStore : ICoffeeCountStore

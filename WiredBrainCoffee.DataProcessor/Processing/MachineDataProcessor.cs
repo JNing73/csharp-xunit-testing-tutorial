@@ -7,6 +7,7 @@ namespace WiredBrainCoffee.DataProcessor.Processing
     {
         private readonly Dictionary<string, int> _countPerCoffeeType = new();
         private readonly ICoffeeCountStore _coffeeCountStore;
+        private MachineDataItem? _previousValidItem;
 
         public MachineDataProcessor(ICoffeeCountStore coffeeCountStore)
         {
@@ -15,6 +16,7 @@ namespace WiredBrainCoffee.DataProcessor.Processing
 
         public void ProcessItems(MachineDataItem[] dataItems)
         {
+            _previousValidItem = null;
             _countPerCoffeeType.Clear();
 
             foreach (var dataItem in dataItems)
@@ -27,14 +29,23 @@ namespace WiredBrainCoffee.DataProcessor.Processing
 
         private void ProcessItem(MachineDataItem dataItem)
         {
-            if (!_countPerCoffeeType.ContainsKey(dataItem.CoffeeType))
+            if (IsNewerThanPreviousItem(dataItem))
             {
-                _countPerCoffeeType.Add(dataItem.CoffeeType, 1);
+                if (!_countPerCoffeeType.ContainsKey(dataItem.CoffeeType))
+                {
+                    _countPerCoffeeType.Add(dataItem.CoffeeType, 1);
+                }
+                else
+                {
+                    _countPerCoffeeType[dataItem.CoffeeType]++;
+                }
+                _previousValidItem = dataItem;
             }
-            else
-            {
-                _countPerCoffeeType[dataItem.CoffeeType]++;
-            }
+        }
+
+        private bool IsNewerThanPreviousItem(MachineDataItem dataItem)
+        {
+            return _previousValidItem is null || _previousValidItem.CreatedAt < dataItem.CreatedAt;
         }
 
         private void SaveCountPerCoffeeType()

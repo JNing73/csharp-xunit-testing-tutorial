@@ -20,3 +20,5 @@ the course content.
 - Setup code to run at the end of each test via IDisposable
 - Specifically decouple console dependency by using a TextWriter interface
 - Applying test driven development principles
+- Setting up a Continuous Integration (CI) pipeline which builds and runs the tests
+  on commits to main branch.

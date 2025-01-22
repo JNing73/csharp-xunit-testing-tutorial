@@ -29,8 +29,7 @@ namespace WiredBrainCoffee.DataProcessor.Processing
 
         private void ProcessItem(MachineDataItem dataItem)
         {
-            if (_previousValidItem is null
-                || _previousValidItem.CreatedAt < dataItem.CreatedAt)
+            if (IsNewerThanPreviousItem(dataItem))
             {
                 if (!_countPerCoffeeType.ContainsKey(dataItem.CoffeeType))
                 {
@@ -42,6 +41,11 @@ namespace WiredBrainCoffee.DataProcessor.Processing
                 }
                 _previousValidItem = dataItem;
             }
+        }
+
+        private bool IsNewerThanPreviousItem(MachineDataItem dataItem)
+        {
+            return _previousValidItem is null || _previousValidItem.CreatedAt < dataItem.CreatedAt;
         }
 
         private void SaveCountPerCoffeeType()
